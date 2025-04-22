@@ -30,7 +30,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-4">Welcome to Checked-Off</h1>
+      <h1 className="text-5xl font-bold mb-4">Welcome to Checked-Off</h1>
       {user ? (
         <>
           <p className="mb-4">Logged in as {user.displayName}</p>

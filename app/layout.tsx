@@ -10,6 +10,7 @@ import { useState } from 'react';
 import Confetti from 'react-confetti';
 import { useWindowSize } from '@react-hook/window-size';
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 function LayoutWrapper({ children }: { children: React.ReactNode }) {
@@ -25,7 +26,7 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const allDone = todos.length > 0 && completedCount === todos.length;
 
   return (
-    <div className="flex relative">
+    <div className="flex h-screen w-full bg-[#0D1321] text-white">
       {/* 🎉 Confetti when all tasks are completed */}
       {allDone && <Confetti width={width} height={height} recycle={false} />}
 
@@ -34,7 +35,8 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
         <Sidebar onAddClick={() => setShowModal(true)} />
       )}
 
-      <main className="flex-1">{children}</main>
+      {/* Main content */}
+      <main className="flex-1 overflow-y-auto px-10 py-8">{children}</main>
     </div>
   );
 }
@@ -42,7 +44,7 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-[#0D1321]`}>
         <AuthProvider>
           <TodoProvider>
             <LayoutWrapper>{children}</LayoutWrapper>

@@ -78,7 +78,7 @@ export default function UpcomingPage() {
 
         return (
           <div key={dateKey} className="mb-8 border-b border-gray-200 pb-4">
-            <h2 className="text-lg font-semibold text-gray-700 mb-2">
+            <h2 className="text-lg font-semibold text-white-700 mb-2">
               {formatDateHeading(current)}
             </h2>
 
@@ -133,12 +133,12 @@ export default function UpcomingPage() {
                   type="text"
                   placeholder="Task title"
                   ref={el => (inputRefs.current[dateKey] = el)}
-                  className="w-full border px-3 py-2 rounded text-sm"
+                  className="w-full border px-3 py-2 rounded text-black text-sm"
                 />
                 <textarea
                   placeholder="Optional description"
                   ref={el => (descRefs.current[dateKey] = el)}
-                  className="w-full border px-3 py-2 rounded text-sm"
+                  className="w-full border px-3 py-2 rounded text-black text-sm"
                   rows={2}
                 />
                 <div className="flex gap-2">
@@ -150,7 +150,7 @@ export default function UpcomingPage() {
                   </button>
                   <button
                     onClick={() => setShowInputs(prev => ({ ...prev, [dateKey]: false }))}
-                    className="text-sm px-4 py-2 bg-gray-100 rounded"
+                    className="text-sm px-4 py-2 text-black bg-gray-100 rounded"
                   >
                     Cancel
                   </button>

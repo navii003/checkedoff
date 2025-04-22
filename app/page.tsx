@@ -22,7 +22,6 @@ export default function Home() {
   const { user } = useAuth();
   const router = useRouter();
 
-  // ✅ Move all hooks BEFORE conditional return
   const [showModal, setShowModal] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [priority, setPriority] = useState<Priority>('low');
@@ -97,7 +96,7 @@ export default function Home() {
     });
 
   return (
-    <div className="p-10 max-w-3xl mx-auto">
+    <div className="p-10 max-w-3xl mx-auto text-white">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">All Tasks</h1>
         <button
@@ -108,23 +107,32 @@ export default function Home() {
         </button>
       </div>
 
-      <TodoList todos={todos} setTodos={setTodos} />
+      {todos.length === 0 ? (
+        <div className="text-center mt-20">
+          <h1 className="text-6xl font-bold text-white text-900 mt-200 mb-4">
+            👋 Hello, welcome to <span className="text-red-500">Checked-Off</span>
+          </h1>
+          <p className="text-gray-500 text-lg">Start by adding your first task.</p>
+        </div>
+      ) : (
+        <TodoList todos={todos} setTodos={setTodos} />
+      )}
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 shadow-lg space-y-4 w-full max-w-lg">
+          <div className="bg-white rounded-xl p-6 shadow-lg space-y-4 w-full max-w-lg text-black">
             <input
               ref={inputRef}
               type="text"
               placeholder="Task title"
-              className="w-full text-2xl font-semibold text-gray-800 outline-none placeholder-gray-400"
+              className="w-full text-2xl font-semibold outline-none placeholder-gray-400"
             />
             <div className="relative">
               <div
                 ref={descriptionRef}
                 contentEditable
                 data-placeholder="Add a description... Use @ to tag"
-                className="w-full text-sm text-gray-700 outline-none resize-none border border-gray-200 rounded px-2 py-2 min-h-[64px] whitespace-pre-wrap placeholder-gray-400 empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400 empty:before:block"
+                className="w-full text-sm outline-none resize-none border border-gray-200 rounded px-2 py-2 min-h-[64px] placeholder-gray-400 empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400 empty:before:block"
                 onInput={(e) => {
                   const el = e.currentTarget;
                   const text = el.innerText;
@@ -145,7 +153,6 @@ export default function Home() {
             </div>
 
             <div className="flex flex-wrap gap-3 relative">
-              {/* Due Date */}
               <div className="relative">
                 <button
                   className="bg-gray-100 text-gray-700 px-4 py-2 rounded border text-sm flex items-center gap-2 hover:bg-gray-200"
@@ -168,7 +175,6 @@ export default function Home() {
                 )}
               </div>
 
-              {/* Priority */}
               <div className="relative">
                 <button
                   className="bg-gray-100 text-gray-700 px-4 py-2 rounded border text-sm flex items-center gap-2 hover:bg-gray-200"
@@ -194,7 +200,6 @@ export default function Home() {
                 )}
               </div>
 
-              {/* Reminder */}
               <div className="relative">
                 <button
                   className="bg-gray-100 text-gray-700 px-4 py-2 rounded border text-sm flex items-center gap-2 hover:bg-gray-200"
@@ -221,7 +226,6 @@ export default function Home() {
                 )}
               </div>
 
-              {/* Tagging */}
               <button
                 className="bg-gray-100 text-gray-700 px-4 py-2 rounded border text-sm hover:bg-gray-200 flex items-center gap-2"
                 onClick={() => insertAtCaret('@')}
