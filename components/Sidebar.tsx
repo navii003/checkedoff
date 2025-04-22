@@ -75,7 +75,6 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* 🔻 Logout Button at the bottom */}
       <button
         onClick={logout}
         className="flex items-center justify-center gap-2 text-sm text-red-400 hover:text-red-200 mt-4"
