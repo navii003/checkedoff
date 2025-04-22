@@ -7,7 +7,6 @@ type Priority = 'low' | 'medium' | 'high';
 
 export default function UpcomingPage() {
   const { todos, setTodos } = useTodo();
-  const [priority, setPriority] = useState<Priority>('low');
   const daysToShow = 60;
   const startDate = new Date();
   startDate.setDate(startDate.getDate() + 1); 

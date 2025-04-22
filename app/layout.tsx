@@ -18,7 +18,6 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const { todos } = useTodo();
   const [width, height] = useWindowSize();
-  const [showModal, setShowModal] = useState(false);
 
   const hideSidebarRoutes = ['/login'];
 
